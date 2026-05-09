@@ -1,22 +1,28 @@
 import streamlit as st
-import pickle
 import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
 
-# Load model
-model = pickle.load(open("model.pkl", "rb"))
+# Load dataset
+data = pd.read_csv("dataset.csv")
+
+# Features and target
+X = data.drop("disease", axis=1)
+y = data["disease"]
+
+# Train model directly
+model = DecisionTreeClassifier()
+model.fit(X, y)
 
 # Title
 st.title("🩺 AI Medical Diagnosis System")
 
 st.write("Select Symptoms")
 
-# Convert Yes/No to 1/0
+# Convert Yes/No
 def convert_input(value):
-    if value == "Yes":
-        return 1
-    return 0
+    return 1 if value == "Yes" else 0
 
-# User input
+# Inputs
 fever = convert_input(
     st.selectbox("Fever", ["No", "Yes"])
 )
@@ -33,7 +39,7 @@ fatigue = convert_input(
     st.selectbox("Fatigue", ["No", "Yes"])
 )
 
-# Predict
+# Prediction
 if st.button("Predict Disease"):
 
     symptoms = pd.DataFrame(
