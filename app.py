@@ -9,20 +9,20 @@ data = pd.read_csv("dataset.csv")
 X = data.drop("disease", axis=1)
 y = data["disease"]
 
-# Train model directly
+# Train model
 model = DecisionTreeClassifier()
 model.fit(X, y)
 
-# Title
+# App title
 st.title("🩺 AI Medical Diagnosis System")
 
 st.write("Select Symptoms")
 
-# Convert Yes/No
+# Convert Yes/No to 1/0
 def convert_input(value):
     return 1 if value == "Yes" else 0
 
-# Inputs
+# User inputs
 fever = convert_input(
     st.selectbox("Fever", ["No", "Yes"])
 )
@@ -39,7 +39,7 @@ fatigue = convert_input(
     st.selectbox("Fatigue", ["No", "Yes"])
 )
 
-# Prediction
+# Prediction button
 if st.button("Predict Disease"):
 
     symptoms = pd.DataFrame(
@@ -50,31 +50,30 @@ if st.button("Predict Disease"):
     prediction = model.predict(symptoms)
 
     st.success(f"Predicted Disease: {prediction[0]}")
-      
+
+    disease = prediction[0]
+
     # Doctor recommendation
 
+    if disease == "Flu":
+        st.warning("Recommended Doctor: General Physician")
 
-if disease == "Flu":
-    st.warning("Recommended Doctor: General Physician")
+    elif disease == "Dengue":
+        st.warning("Recommended Doctor: Medicine Specialist")
 
-elif disease == "Dengue":
-    st.warning("Recommended Doctor: Medicine Specialist")
+    elif disease == "Cold":
+        st.warning("Recommended Doctor: ENT Specialist")
 
-elif disease == "Cold":
-    st.warning("Recommended Doctor: ENT Specialist")
+    elif disease == "Migraine":
+        st.warning("Recommended Doctor: Neurologist")
 
-elif disease == "Migraine":
-    st.warning("Recommended Doctor: Neurologist")
+    elif disease == "Malaria":
+        st.warning("Recommended Doctor: Infectious Disease Specialist")
 
-elif disease == "Malaria":
-    st.warning("Recommended Doctor: Infectious Disease Specialist")
+    elif disease == "Sinusitis":
+        st.warning("Recommended Doctor: ENT Specialist")
 
-elif disease == "Sinusitis":
-    st.warning("Recommended Doctor: ENT Specialist")
-
-elif disease == "No Disease":
-    st.success("No doctor needed. You seem healthy.")
+    elif disease == "No Disease":
+        st.success("No doctor needed. You seem healthy.")
 
     st.info("Prediction generated using AI and Machine Learning")
-     disease = prediction[0]
- 
