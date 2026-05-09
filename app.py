@@ -52,7 +52,6 @@ if st.button("Predict Disease"):
     st.success(f"Predicted Disease: {prediction[0]}")
     # Doctor recommendation
 
-disease = prediction[0]
 
 if disease == "Flu":
     st.warning("Recommended Doctor: General Physician")
@@ -76,3 +75,4 @@ elif disease == "No Disease":
     st.success("No doctor needed. You seem healthy.")
 
     st.info("Prediction generated using AI and Machine Learning")
+    disease = prediction[0]
