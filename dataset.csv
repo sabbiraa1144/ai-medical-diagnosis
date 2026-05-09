@@ -15,7 +15,6 @@ fever,cough,headache,fatigue,disease
 0,1,1,1,Sinusitis
 1,0,0,0,Malaria
 1,1,0,0,Flu
-1,1,1,0,Covid
 0,1,0,1,Cold
 0,0,1,1,Migraine
 1,0,1,1,Dengue
@@ -25,7 +24,6 @@ fever,cough,headache,fatigue,disease
 1,0,0,1,Malaria
 0,1,0,0,Cold
 1,0,1,0,Dengue
-1,1,1,1,Covid
 0,0,1,0,Migraine
 1,1,0,0,Flu
 0,1,1,1,Sinusitis
