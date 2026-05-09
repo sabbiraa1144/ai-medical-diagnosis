@@ -50,7 +50,7 @@ if st.button("Predict Disease"):
     prediction = model.predict(symptoms)
 
     st.success(f"Predicted Disease: {prediction[0]}")
-       disease = prediction[0]
+      
     # Doctor recommendation
 
 
@@ -76,4 +76,5 @@ elif disease == "No Disease":
     st.success("No doctor needed. You seem healthy.")
 
     st.info("Prediction generated using AI and Machine Learning")
+     disease = prediction[0]
  
