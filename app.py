@@ -50,5 +50,29 @@ if st.button("Predict Disease"):
     prediction = model.predict(symptoms)
 
     st.success(f"Predicted Disease: {prediction[0]}")
+    # Doctor recommendation
+
+disease = prediction[0]
+
+if disease == "Flu":
+    st.warning("Recommended Doctor: General Physician")
+
+elif disease == "Dengue":
+    st.warning("Recommended Doctor: Medicine Specialist")
+
+elif disease == "Cold":
+    st.warning("Recommended Doctor: ENT Specialist")
+
+elif disease == "Migraine":
+    st.warning("Recommended Doctor: Neurologist")
+
+elif disease == "Malaria":
+    st.warning("Recommended Doctor: Infectious Disease Specialist")
+
+elif disease == "Sinusitis":
+    st.warning("Recommended Doctor: ENT Specialist")
+
+elif disease == "No Disease":
+    st.success("No doctor needed. You seem healthy.")
 
     st.info("Prediction generated using AI and Machine Learning")
